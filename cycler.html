@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Cycler Page</title>
+    <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color:aquamarine;
+  }
+
+.flex-container > div {
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 10px;  font-size: 30px;
+}
+
+
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style>
+</head>
+<body>
+    <h1 class="text-color" style="color:#4914da">AdiLakshmi Meesala builds a cycler</h1>
+		<div class="flex-container" id="target">
+		  <div class="cycler" style="color:#df1a1a">Row item 1</div>   
+		  <div class="cycler" style="color:blueviolet">Row item 2</div>  
+		  <div class="cycler" style="color:#10f188">Row item 3</div>  
+		</div>
+	
+	<p class="text-color" style="color:#df1a1a"> Press the button to create a new element of type div and then add it to the container.
+		</p>
+		<button class="btn btn-success" onclick="makeNewDiv()">Add value</button>
+       
+
+        <input type="text" id="element">
+        <button class="text-color" style="color: #e536bc" type="button" onclick="get()">Get</button>
+        <button class="text-color" style="color:black" type="button" onclick="spin()">Spin</button>
+	
+	
+</body>
+<script>
+	function makeNewDiv() {
+		
+		let element = document.createElement("div")
+		let result = document.getElementById("element").value;
+		element.innerHTML = result
+		element.style.color = "red"
+		element.className = "cycler";
+		
+		let container = document.getElementById('target')
+		container.appendChild(element)
+
+	}
+
+	function get(){
+		var cyclerItems = document.getElementsByClassName("cycler");
+		if(cyclerItems.length > 0){
+			cyclerItems[cyclerItems.length-1].remove();
+		}
+	}
+
+	function spin(){
+		var cyclerItems = document.getElementsByClassName("cycler");
+		if(cyclerItems.length > 1){
+			let container = document.getElementById('target');
+			var removedItem = cyclerItems[cyclerItems.length-1];
+			cyclerItems[cyclerItems.length-1].remove();
+			container.insertBefore(removedItem,container.firstChild);
+		}
+	}
+</script>
+</html>	
