@@ -71,5 +71,18 @@
 			container.insertBefore(removedItem,container.firstChild);
 		}
 	}
+    function swap() {
+            let cyclerItems = document.getElementsByClassName("cycler")
+            let value1 = Math.floor(Math.random() * cyclerItems.length)
+            let value2 = Math.floor(Math.random() * cyclerItems.length)
+            let firstElement = document.getElementsByClassName("cycler")[value1]
+            let secondElement = document.getElementsByClassName("cycler")[value2]
+            if(cyclerItems.length > 1) {
+                let temp = firstElement.innerHTML
+                firstElement.innerHTML = secondElement.innerHTML
+                secondElement.innerHTML = temp
+            }
+        }
+
 </script>
 </html>	
